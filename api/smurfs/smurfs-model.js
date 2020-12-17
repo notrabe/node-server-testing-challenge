@@ -8,22 +8,23 @@ module.exports = {
     getById
 }
 
-function insert() {
-
+async function insert(smurf) {
+    const [id] = await db('smurfs').insert(smurf)
+    return db('smurfs').where({id}).first()
 }
 
 function update() {
 
 }
 
-function remove() {
-
+function remove(id) {
+    return db('smurfs').where({id}).delete()
 }
 
 function getAll() {
-
+    return db('smurfs')
 }
 
-function getById() {
-    
+function getById(id) {
+    return db('smurfs').where('id', id).first()
 }
